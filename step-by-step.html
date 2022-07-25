@@ -1,0 +1,80 @@
+<!--
+1. Node.js server install
+create folder
+create folder [server] - by hand
+create folder [r1] - npx create-react-app r1
+
+server file
+npm init -y
+npm install express
+npm i cors
+npm i mysql
+npm i nodemon
+
+add to 'scripts':
+'start': 'nodemon app.js'
+
+server file
+create .gitignore:
+/node_modules
+
+create app.js:
+
+const express = require("express");
+const app = express();
+const port = 3003;
+const cors = require("cors");
+app.use(cors());
+const mysql = require("mysql");
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+app.use(express.json());
+
+const con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "la_ma",
+});
+
+app.listen(port, () => {
+    console.log(`Bebras klauso porto Nr ${port}`);
+});
+
+create NEW database in phpMyAdmin
+
+cd r1
+npm i axios
+npm i sass
+npm install react-router-dom@6
+npm start
+
+App.css -> App.scss (delete everything inside)
+App.js -> App.jsx (delete things you don't need)
+index.js -> leave only
+
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+
+bootstrap.css file
+copy from old repository
+import before app.scss in App.jsx
+
+Component folder in r1 src
+back folder
+front folder
+
+npm i uuid (reneruoja unikalius id, neimanoma sugeneruoti tokiu maciu id)
+
+*auth login*
+server folder
+npm i js-md5
+npm i uuid
+-->
