@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.css";
 import {
   BrowserRouter,
   Routes,
@@ -16,14 +16,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <RequireAuth role="user">
-              <Front />
-            </RequireAuth>
-          }
-        />
+        <Route path="/" element={<Front show="public" />} />
+        <Route path="/stories" element={<Front show="stories" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />
         <Route
@@ -52,7 +46,7 @@ function RequireAuth({ children, role }) {
           setView(<Navigate to="/login" replace />);
         }
       });
-  }, [children]);
+  }, [children, role]);
 
   return view;
 }
@@ -72,10 +66,11 @@ function LoginPage() {
       }
     });
   };
+
   return (
     <div>
       <div>
-        name:{" "}
+        Username:{" "}
         <input
           type="text"
           value={user}
@@ -83,7 +78,7 @@ function LoginPage() {
         ></input>
       </div>
       <div>
-        password:{" "}
+        Password:{" "}
         <input
           type="password"
           value={pass}
